@@ -8,7 +8,7 @@ import json
 
 # Check whether data set exists
 # Throw an exception if it does
-def data_set_exists(zosmfProfile, dsName):
+def data_set_exists(zosmfProfile, dsName):  # FIXME: more like "fail if data set exists"?
     connection = { "plugin_profile": zosmfProfile}
     files = Files(connection)
     lsDs = files.list_dsn(dsName)
@@ -17,7 +17,6 @@ def data_set_exists(zosmfProfile, dsName):
         return False
     elif lsDs['items'][0]['dsname'] == dsName :
         raise AssertionError('>>> ERROR: ' + dsName + ' data set exists!')
-        return True
     else:
         return False
 
@@ -25,14 +24,14 @@ def data_set_exists(zosmfProfile, dsName):
 # Create a new test data set
 # Zowe Python SDK does not implement create data set yet -> using CLI command for now
 def create_data_set(zosmfProfile, dsName):
-    os.system('zowe zos-files create data-set-sequential ' + dsName + ' --zosmf-p ' + zosmfProfile + ' > /dev/null')
+    os.system('zowe zos-files create data-set-sequential ' + dsName + ' --zosmf-p ' + zosmfProfile)
 
 
 # Upload test data into a newly created data set
 def upload_test_data(zosmfProfile, dsName, testData):
     connection = { "plugin_profile": zosmfProfile}
     files = Files(connection)
-    upDs = files.upload_file_to_dsn(testData, dsName)
+    files.upload_file_to_dsn(testData, dsName)
 
 
 # Submit job from local file
@@ -49,13 +48,11 @@ def submit_jcl_notify(zosmfProfile, jcl):
     jobName = resp["jobname"]
     jobId = resp["jobid"]
 
-    counter = 0
+    timeout = time.time() + TIMEOUT
     while resp["status"] != 'OUTPUT':
-        if counter >= TIMEOUT:
-            raise TimeoutError('>>> ERROR: ' + jobName + '(' + jobId + ') exceeded time out: ' + str(counter))
-            break
+        if time.time() > timeout:
+            raise TimeoutError('>>> ERROR: Job %s(%s) exceeded timeout of %s secs' % (jobName, jobId, TIMEOUT))
         time.sleep(STEP)
-        counter += STEP
         resp = job.get_job_status(jobName, jobId)    
     
     return resp
@@ -71,7 +68,7 @@ def validate_sort_job(zosmfProfile, jobResp, expectedData):
     jobId = jobResp["jobid"]
     
     cmd = ['zowe', 'zos-jobs', 'list', 'spool-files-by-jobid', jobId, '--rfj', '--zosmf-p', zosmfProfile]
-    p = subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    p = subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT, shell=True)
     stdout,stderr = p.communicate()
     outJson = json.loads(stdout)
 
@@ -81,8 +78,8 @@ def validate_sort_job(zosmfProfile, jobResp, expectedData):
             ddId = item["id"]
             break
     
-    cmd = ['zowe', 'zos-jobs', 'view', 'spool-file-by-id', jobId, str(ddId), '--rfj']
-    p = subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    cmd = ['zowe', 'zos-jobs', 'view', 'spool-file-by-id', jobId, str(ddId), '--rfj', '--zosmf-p', zosmfProfile]
+    p = subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT, shell=True)
     stdout,stderr = p.communicate()
     outJson = json.loads(stdout)
 
@@ -93,5 +90,5 @@ def validate_sort_job(zosmfProfile, jobResp, expectedData):
 # Delete test data set
 # Zowe Python SDK does not implement delete data set yet -> using CLI command for now
 def delete_data_set(zosmfProfile, dsName):
-    os.system('zowe zos-files delete data-set ' + dsName + ' --for-sure --zosmf-p ' + zosmfProfile + ' > /dev/null')
+    os.system('zowe zos-files delete data-set ' + dsName + ' --for-sure --zosmf-p ' + zosmfProfile)
     return True
