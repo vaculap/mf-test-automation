@@ -2,6 +2,8 @@
 
 Sample project ilustrating use of Jest Testing Framework to test mainframe applications. Sample test cases cover the use Zowe CLI as well as Zowe Node.js SDK.
 
+![Run test case](../media/frmwrk-jest.gif)
+
 ## Prerequisities
 * Node.js
 * Zowe CLI with defined default z/OSMF profile for Zowe CLI samples

@@ -2,6 +2,8 @@
 
 Sample project ilustrating use of Robot Testing Framework together with Zowe Python Client SDK to test mainframe applications.
 
+![Run test case](../media/frmwrk-robot.gif)
+
 ## Prerequisities
 * python (python.org)
 * robot framework (python -m pip install robotframework)

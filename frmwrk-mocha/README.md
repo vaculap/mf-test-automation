@@ -2,6 +2,8 @@
 
 Sample project ilustrating use of Mocha.js testing framework together with Chai assertion library to test mainframe applications. The samples use Zowe CLI to perform mainframe actions.
 
+![Run test case](../media/frmwrk-mocha.gif)
+
 ## Prerequisities
 * Node.js
 * Zowe CLI with defined default z/OSMF profile for Zowe CLI samples
