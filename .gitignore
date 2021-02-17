@@ -5,3 +5,4 @@ output.xml
 report.html
 __pycache__/
 .DS_store
+.vscode/
