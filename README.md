@@ -21,6 +21,6 @@ Open the individual frmwrk-* subdirectories as your projects to explore those:
 ![UseCase](./media/UseCase.jpg)
 
 
-## Sample automated test cases are then structured accoding to this test scenario:
+## Sample automated test cases are then structured according to this test scenario:
 
 ![TestScenario](./media/TestScenario.jpg)

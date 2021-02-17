@@ -7,7 +7,7 @@ import json
 
 
 # Check whether data set exists
-# Throw an exeption if it does
+# Throw an exception if it does
 def data_set_exists(zosmfProfile, dsName):
     connection = { "plugin_profile": zosmfProfile}
     files = Files(connection)
@@ -28,7 +28,7 @@ def create_data_set(zosmfProfile, dsName):
     os.system('zowe zos-files create data-set-sequential ' + dsName + ' --zosmf-p ' + zosmfProfile + ' > /dev/null')
 
 
-# Upload test data into a newly clreated data set
+# Upload test data into a newly created data set
 def upload_test_data(zosmfProfile, dsName, testData):
     connection = { "plugin_profile": zosmfProfile}
     files = Files(connection)
@@ -52,7 +52,7 @@ def submit_jcl_notify(zosmfProfile, jcl):
     counter = 0
     while resp["status"] != 'OUTPUT':
         if counter >= TIMEOUT:
-            raise TimeoutError('>>> ERROR: ' + jobName + '(' + jobId + ') exeeded time out: ' + str(counter))
+            raise TimeoutError('>>> ERROR: ' + jobName + '(' + jobId + ') exceeded time out: ' + str(counter))
             break
         time.sleep(STEP)
         counter += STEP
@@ -87,7 +87,7 @@ def validate_sort_job(zosmfProfile, jobResp, expectedData):
     outJson = json.loads(stdout)
 
     if outJson['stdout'] != open(expectedData).read():
-        raise AssertionError(">>> ERROR: SORTOUT ouput is not as expected")
+        raise AssertionError(">>> ERROR: SORTOUT output is not as expected")
 
 
 # Delete test data set

@@ -1,14 +1,14 @@
 # Mainframe Test Automation using Robot testing framework
 
-Sample project ilustrating use of Robot Testing Framework together with Zowe Python Client SDK to test mainframe applications.
+Sample project illustrating use of Robot Testing Framework together with Zowe Python Client SDK to test mainframe applications.
 
 ![Run test case](../media/frmwrk-robot.gif)
 
-## Prerequisities
-* python (python.org)
-* robot framework (python -m pip install robotframework)
+## Prerequisites
+* python (www.python.org)
+* robot framework (`python -m pip install robotframework`)
 
-## Recomendations
+## Recommendations
 * Visual Studio Code
 * Python VSCode extension
 * Pylance VSCode extension
@@ -27,6 +27,6 @@ Sample project ilustrating use of Robot Testing Framework together with Zowe Pyt
     * This is the actual Robot Testing Framework test case.
 
 ## How to run the test case
-If prerequisities are met, simply run:
+If prerequisites are met, simply run:
 
 `robot SORTSDK1.test.robot`
