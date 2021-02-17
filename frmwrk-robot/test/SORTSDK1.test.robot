@@ -4,9 +4,9 @@ Library          mf_test_automation.py
 
 *** Variables ***
 ${zosmfProfile}    TSO1
-${jcl}             SORTSDK1.jcl
-${testData}        SORTSDK1.input.data
-${expectedData}    SORTSDK1.expected.data
+${jcl}             test/SORTSDK1.jcl
+${testData}        test/SORTSDK1.input.data
+${expectedData}    test/SORTSDK1.expected.data
 ${dsName}          PUBLIC.MFTSTAUT.ROBOT.SORTSDK1
 
 *** Test Cases ***

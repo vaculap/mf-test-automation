@@ -25,7 +25,7 @@ def data_set_exists(zosmfProfile, dsName):
 # Create a new test data set
 # Zowe Python SDK does not implement create data set yet -> using CLI command for now
 def create_data_set(zosmfProfile, dsName):
-    os.system('zowe zos-files create data-set-sequential ' + dsName + ' --zosmf-p ' + zosmfProfile + ' > nul')
+    os.system('zowe zos-files create data-set-sequential ' + dsName + ' --zosmf-p ' + zosmfProfile + ' > /dev/null')
 
 
 # Upload test data into a newly clreated data set
@@ -93,5 +93,5 @@ def validate_sort_job(zosmfProfile, jobResp, expectedData):
 # Delete test data set
 # Zowe Python SDK does not implement delete data set yet -> using CLI command for now
 def delete_data_set(zosmfProfile, dsName):
-    os.system('zowe zos-files delete data-set ' + dsName + ' --for-sure --zosmf-p ' + zosmfProfile + ' > nul')
+    os.system('zowe zos-files delete data-set ' + dsName + ' --for-sure --zosmf-p ' + zosmfProfile + ' > /dev/null')
     return True
