@@ -1,0 +1,7 @@
+job-output/
+node_modules/
+log.html
+output.xml
+report.html
+__pycache__/
+.DS_store
