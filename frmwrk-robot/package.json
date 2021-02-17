@@ -1,7 +1,7 @@
 {
     "name": "frmwrk-robot",
     "version": "1.0.0",
-    "description": "Sample test cases for Robot testing framework.",
+    "description": "Sample test case for Robot testing framework.",
     "main": "",
     "scripts": {
         "test": "robot test/SORTSDK1.test.robot"
