@@ -5,6 +5,7 @@ import time
 import subprocess
 import json
 
+
 # Check whether data set exists
 # Throw an exeption if it does
 def data_set_exists(zosmfProfile, dsName):
@@ -26,11 +27,13 @@ def data_set_exists(zosmfProfile, dsName):
 def create_data_set(zosmfProfile, dsName):
     os.system('zowe zos-files create data-set-sequential ' + dsName + ' --zosmf-p ' + zosmfProfile + ' > nul')
 
+
 # Upload test data into a newly clreated data set
 def upload_test_data(zosmfProfile, dsName, testData):
     connection = { "plugin_profile": zosmfProfile}
     files = Files(connection)
     upDs = files.upload_file_to_dsn(testData, dsName)
+
 
 # Submit job from local file
 # return job response
@@ -58,6 +61,8 @@ def submit_jcl_notify(zosmfProfile, jcl):
     return resp
 
 
+# Run validation for sort job
+# check RC=0 and SORTOUT is as expected
 def validate_sort_job(zosmfProfile, jobResp, expectedData):
     if jobResp["retcode"] != 'CC 0000':
         raise AssertionError('>>> ERROR: ' + jobResp["jobname"] + '(' + jobResp["jobid"] + 
@@ -90,18 +95,3 @@ def validate_sort_job(zosmfProfile, jobResp, expectedData):
 def delete_data_set(zosmfProfile, dsName):
     os.system('zowe zos-files delete data-set ' + dsName + ' --for-sure --zosmf-p ' + zosmfProfile + ' > nul')
     return True
-
-
-
-prof = 'TSO1'
-jcl = 'SORTSDK1.jcl'
-testData = 'SORTSDK1.input.data'
-expectedData = 'SORTSDK1.expected.data'
-dsName = 'PUBLIC.MFTSTAUT.ROBOT.SORTSDK1'
-
-#create_data_set(prof, dsName)
-#upload_test_data(prof, dsName, testData)
-#submit_jcl_notify(prof, jcl)
-#delete_data_set(prof, dsName)
-
-#validate_sort_job("TSO1", "TEST", expectedData)
