@@ -1,14 +1,14 @@
 # Mainframe Test Automation using Mocha.js testing framework
 
-Sample project ilustrating use of Mocha.js testing framework together with Chai assertion library to test mainframe applications. The samples use Zowe CLI to perform mainframe actions.
+Sample project illustrating use of Mocha.js testing framework together with Chai assertion library to test mainframe applications. The samples use Zowe CLI to perform mainframe actions.
 
 ![Run test case](../media/frmwrk-mocha.gif)
 
-## Prerequisities
+## Prerequisites
 * Node.js
 * Zowe CLI with defined default z/OSMF profile for Zowe CLI samples
 
-## Recomendations
+## Recommendations
 * Visual Studio Code
 
 ## How to initialize this Mocha.js project - cloned from git repository
@@ -27,8 +27,8 @@ Sample project ilustrating use of Mocha.js testing framework together with Chai 
     * This is the actual Mocha.js Testing Framework test case.
 
 ## How to run test cases
-If prerequisities are met, simply execute following command:
+If prerequisites are met, simply execute following command:
 
     npx mocha
 
-Optionaly use defined NPM Scripts through the VSCode Explorer
+Optionally use defined NPM Scripts through the VSCode Explorer

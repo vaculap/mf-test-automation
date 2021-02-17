@@ -1,14 +1,14 @@
 # Sample test cases for Jest testing framework.
 
-Sample project ilustrating use of Jest Testing Framework to test mainframe applications. Sample test cases cover the use Zowe CLI as well as Zowe Node.js SDK.
+Sample project illustrating use of Jest Testing Framework to test mainframe applications. Sample test cases cover the use Zowe CLI as well as Zowe Node.js SDK.
 
 ![Run test case](../media/frmwrk-jest.gif)
 
-## Prerequisities
+## Prerequisites
 * Node.js
 * Zowe CLI with defined default z/OSMF profile for Zowe CLI samples
 
-## Recomendations
+## Recommendations
 * Visual Studio Code
 * Jest Runner VSCode extension
 
@@ -39,7 +39,7 @@ Sample project ilustrating use of Jest Testing Framework to test mainframe appli
 * `SORTCLI1.jcl`
     * Sort job JCL.
 * `SORTCLI1.test.ts`
-    * This is the actual Jest Testing Framework test case using Zowe CLI to communicate with mainframe.
+    * This is the actual Jest Testing Framework test case using Zowe CLI to communicate with the mainframe.
 
 * `SORTSDK1.expected.data`
     * Expected data output from the Sort job. It is used for asserting the job output.
@@ -48,14 +48,14 @@ Sample project ilustrating use of Jest Testing Framework to test mainframe appli
 * `SORTSDK1.jcl`
     * Sort job JCL.
 * `SORTSDK1.test.ts`
-    * This is the actual Jest Testing Framework test case using Zowe Node.js SDK to communicate with mainframe.
+    * This is the actual Jest Testing Framework test case using Zowe Node.js SDK to communicate with the mainframe.
 
 ## How to run test cases
-If prerequisities are met, simply execute following command:
+If prerequisites are met, simply execute following command:
 
     npm run test
 
-Optionaly use defined NPM Scripts through the VSCode Explorer
+Optionally use defined NPM Scripts through the VSCode Explorer
 * test
     * to run all test cases
 * testCLI
