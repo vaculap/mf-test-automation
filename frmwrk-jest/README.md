@@ -22,8 +22,8 @@ Sample project illustrating use of Jest Testing Framework to test mainframe appl
         npm install
 
 ## How to run test cases
-1. Update variables in `SORTCLI1.test.js`
-2. Update jobcard in `SORTCLI1.jcl` (and the data set name, if needed)
+1. Update variables in `SORTCLI1.test.ts` and `SORTSDK1.test.ts`
+2. Update jobcard in `SORTCLI1.jcl` and `SORTSDK1.jcl` (and the data set name, if needed)
 3. If prerequisites are met, simply execute the following command from the frmwrk-jest:
 
         npm run test
