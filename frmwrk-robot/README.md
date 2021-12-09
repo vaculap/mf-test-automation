@@ -5,7 +5,7 @@ Sample project illustrating use of Robot Testing Framework together with Zowe Py
 ![Run test case](../media/frmwrk-robot.gif)
 
 ## Prerequisites
-* [Python](www.python.org) 3.5 or above
+* [Python](https://www.python.org/) 3.5 or above
 * Robot Framework
 * Zowe Python SDK
 
